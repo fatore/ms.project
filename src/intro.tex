@@ -1,29 +1,148 @@
 \section{Introdução}
 
-A exploração de conjuntos de dados é um problema abordado com frequência em computação, tanto na área acadêmica quanto na indústria~\cite{Ngai2009,Harding2006}. Tal exploração tem como objetivo uma melhor compreensão dos fenômenos que afetam a sociedade em determinados aspectos. Com base nos novos conhecimentos adquiridos, espera-se melhorar o processo de tomadas de decisões como por exemplo, previsão de condições climáticas, diagnósticos de doenças, detecções de fraude, análise de mercado, etc.
+% Exploração dos dados
+A exploração de conjuntos de dados é um problema abordado
+com frequência em computação, tanto na área acadêmica quanto
+na indústria~\cite{Ngai2009,Harding2006}. Tal exploração tem
+como objetivo uma melhor compreensão dos fenômenos que
+afetam a sociedade nos mais variados aspectos. Com base nos
+conhecimentos adquiridos durante a exploração é possível 
+melhorar o processo de tomadas de decisões, como
+previsão de condições climáticas, diagnósticos de doenças,
+detecções de fraude, análise de mercado, etc.
 
-O procedimento para a exploração inicia pela coleta e armazenamento dos dados. Esta tarefa pode ser realizada por sensores, sistemas de monitoramento, simulações ou aplicações diversas que utilizam banco de dados. A meta é coletar o máximo de informação sobre um domínio e espera-se, posteriormente, extrair novos conhecimentos a partir dos dados coletados~\cite{Keim2002}. 
+% Dados multidimensionais 
+As investigações sobre os dados são precedidas pelas etapas
+de coleta e armazenamento dos dados, as quais podem ser
+realizadas por sensores, sistemas de monitoramento,
+simulações computacionais ou aplicações diversas que
+utilizam banco de dados. Nessas etapas, busca-se registrar o
+máximo de detalhes sobre o fenômeno observado. No caso de
+análises climáticas, por exemplo, poderiam ser observadas
+variáveis como temperatura, velocidade do vento, umidade do
+ar, etc. As observações poderiam ser realizadas em
+diferentes posições geográficas, onde para cada posição
+teria-se uma coleção de variáveis. Comumente, denomina-se
+cada uma dessas coleções como uma instância de dados.
+Assim, sabendo que cada variável observada também pode ser
+chamada de dimensão, quando diversas instâncias de dados são
+coletadas obtém-se um conjunto de dados multidimensional. 
 
-Uma consequência direta de se coletar o máximo de informação é que dificilmente se conhecerá a dimensionalidade intrínseca dos dados, isto é, o conjunto de variáveis observadas que realmente são relevantes para a compreensão do fenômeno observado. Isso faz com que muitas vezes se utilize todos os atributos coletados nas investigações, o que eleva o custo computacional e dificulta as análises. 
+% Problema de dados multidimensionais
+Explorar conjuntos de dados multidimensionais envolve uma
+série de desafios. Um deles é a dificuldade em se
+identificar quais dos dados coletados são realmente
+relevantes para as análises. Isso faz com que, muitas vezes,
+se utilize todas as variáveis observadas nas investigações,
+sejam elas relevantes ou não. Nessas condições, eleva-se a
+complexidade das análises e também o custo computacional dos
+métodos que são aplicados sobre os dados~\cite{Beyer1999}.
+Um outro problema é a falta de garantias de que os fatores
+fundamentais para a compreensão do problema tenham sido
+coletados. A maioria das aplicações está sujeita a essa
+situação, pois os sistemas de coleta de dados são
+suscetíveis a falhas e não reconhecem facilmente fatores
+subjetivos. 
 
-Quando o número de atributos (dimensões) utilizado nas análises for muito elevado, 50 variáveis por exemplo, há a ocorrência do problema conhecido como ``Maldição da Dimensionalidade''~\cite{Beyer1999}. Esta ``maldição'' refere-se ao fato de que algumas das propriedades geométricas de espaços bi ou tridimensionais não se mantém para espaços de maior dimensionalidade. Uma consequência prática de tal fato é que conforme o número de  dimensões aumenta, a distância entre um ponto e seu vizinho mais próximo tende a mesma distância deste ponto ao seu vizinho mais distante~\citet{Beyer1999}.
+% Solução para o problema: transformar os dados Primeira
+Um modo de contornar esses problemas é transformar os dados
+para torná-los mais representativos para a execução das
+tarefas seguintes. A transformação mais comumente aplicada
+sobre os dados é a redução de dimensionalidade. Esta tem
+como objetivo encontrar o menor espaço dimensional que é
+capaz de descrever os dados mantendo informações que são
+relevantes segundo algum critério. O processo de redução
+pode ser realizado tanto pela eliminação de dimensões
+irrelevantes ou redundantes quanto pela combinação entre
+dimensões. 
 
-Ao enfrentar as dificuldades impostas pela alta dimensionalidade, uma abordagem adotada com frequência é o uso de métodos de redução de dimensionalidade. O objetivo desses métodos é encontrar o menor espaço dimensional que é capaz de descrever os dados mantendo informações que são relevantes segundo determinado critério. Tal abordagem é  viabilizada pelo fato de que a maioria dos conjuntos de dados possuem atributos que não são ``importantes'' para a compreensão do fenômeno observado.
+% Problema dos métodos clássicos de redução 
+Um dos problemas dos métodos de redução de dimensionalidade
+é que o conceito de relevância é subjetivo e pode variar de
+acordo com a aplicação. Além disso, os métodos tradicionais
+de redução apresentam uma natureza dita ``caixa-preta'',
+pois o usuário inspeciona apenas os dados de entrada e
+saída, desconhecendo o processamento realizado internamente.
+Esta natureza torna esses métodos pouco compreensivos e,
+além disso, proíbe que o usuário contribua com a sua
+experiência na área. Buscando tratar essa limitação novos
+métodos têm sido propostos. Eles permitem que o usuário
+guie o processo de redução por meio da interação com
+representações gráficas dos dados.
 
-A maioria dos métodos de redução de dimensionalidade são ditos métodos caixa-preta, ou seja, o usuário inspeciona apenas os dados de entrada e saída, desconhecendo o processamento interno realizado. Deste modo, esses métodos restringem a interação do usuário, o que além de tornar o processo pouco intuitivo, impede que o usuário modifique os resultados de acordo com a sua experiência na área. 
+% Vantagens métodos visuais
+Técnicas baseadas em visualizações que permitem a
+interação do usuário têm sido aplicadas não somente em
+tarefas de redução de dimensionalidade, mas em diversas
+áreas de exploração de dados. Elas ganharam grande
+popularidade nos últimos anos~\cite{State2012} e propiciaram
+a firmação da área de visualização de
+informação~\cite{Keim2002}. Grande parte do sucesso desta
+recente área pode ser atribuído ao uso efetivo da capacidade
+preemptiva da visão humana na exploração dos dados. Foi
+demonstrado que quando os dados são representados por 
+gráficos, o ser humano é capaz de detectar e reconhecer
+padrões de forma mais fácil e rápida~\cite{Healey1995},
+mesmo em grandes conjuntos de dados~\cite{Fodor2002}. 
 
-A área de visualização computacional é uma alternativa interessante em relação aos métodos automáticos para a  exploração de conjuntos de dados, pois permite que o usuário utilize sua percepção visual para detectar padrões e seu conhecimento sobre o domínio para  orientar as análises. 
+% Métodos visuais viabilizam a segunda abordagem
+No entanto, utilizar a capacidade preemptiva da visão humana
+não é a única vantagem das técnicas de visualização de
+informação. Ao permitirem que o usuário participe ativamente
+na geração dos resultados, essas técnicas viabilizam novas
+abordagens para se explorar e transformar os dados. A
+construção interativa de dimensões é uma dessas novas
+abordagens e refere-se justamente a uma alternativa à
+redução de dimensionalidade para se transformar os conjuntos
+de dados.
 
-%Porém, muitos dos métodos visuais são limitados pelo número de elementos e dimensões das bases de dados.
+% Motivação construção 
+A necessidade de se construir novas dimensões surge em
+situações em que a redução de dimensionalidade, seja ela
+automática ou interativa, não é suficiente para tornar os
+dados mais representativos.  Isso ocorre quando fatores
+fundamentais para a compreensão do problema não foram
+capturados na etapa de coleta dos dados. Em situações como
+essa, o problema só poderá ser descrito por completo ao se
+agregar o conhecimento do usuário nos dados.
 
-% A área \emph{Visual Analytics}~\cite{Thomas2005} surgiu como uma união entre os métodos automáticos e visualização, seu objetivo é utilizar as vantagens das duas áreas para cobrirem suas limitações individuais. Essa união tem viabilizado avanços em diversas atividades de pesquisa, inclusive na tarefa de redução de dimensionalidade. 
+% Limitações trabalhos relacionados - gancho para objetivo
+A pesquisa em construção interativa de dimensões é muito
+recente, sendo que a principal contribuição data neste mesmo
+ano~\cite{Gladys2013}. Devido à essa imaturidade, as
+técnicas propostas ainda apresentam diversas limitações. Os
+métodos de redução de dimensionalidade interativa não são
+tão recentes quanto os de construção de dimensões. Porém,
+apresentam limitações tanto em relação às visualizações em
+que se baseiam quanto aos mecanismos de interação propostos.
 
-Este projeto de mestrado propõe o uso de projeções multidimensionais coordenadas entre itens e dimensões para apoiar o usuário na tarefa de redução de dimensionalidade de forma mais intuitiva, ágil e confiável. Além disso, propõe-se um método que permite ao usuário modificar os resultados obtidos, quando necessário, por meio da transformação do espaço de atributos.
+% Objetivo do trabalho
+Deste modo, este trabalho de mestrado tem como objetivo
+desenvolver uma técnica para transformação de dados
+multidimensionais que atenda às duas situações descritas
+acima. A primeira, em que é necessário reduzir a
+dimensionalidade dos dados para se eliminar variáveis
+irrelevantes ou redundantes. E a segunda, em que novas
+dimensões devem ser construídas com base no conhecimento do
+usuário para representar informações ausentes nos dados. A
+abordagem proposta leva em consideração as limitações dos
+trabalhos do atual estado da arte e se baseia na
+simplicidade das visualizações e dos mecanismos de interação
+para superá-las. 
 
-A obtenção de conjuntos de dados concisos, ou seja, conjuntos que não contém atributos irrelevantes ou redundantes, proporcionará  uma análise mais efetiva dos dados. Por exemplo, pode se melhorar o desempenho de agrupadores e classificadores de dados. Pretende-se avaliar as contribuições deste trabalho justamente pela quantificação do desempenho de tais métodos ao utilizar as técnicas desenvolvidas, seguida de uma comparação com técnicas já estabelecidas na literatura.
+% Resultados esperados e forma de avaliação 
+A obtenção de conjuntos de dados representativos, isto é,
+conjuntos que não contém atributos irrelevantes ou
+redundantes e que refletem a opinião do usuário,
+proporcionará uma análise mais efetiva dos dados. Será
+possível, por exemplo, melhorar o desempenho de agrupadores
+e classificadores de dados. Pretende-se avaliar as
+contribuições deste trabalho justamente pela quantificação
+do desempenho de tais métodos ao precedê-los pela técnica
+desenvolvida, seguida de uma comparação com técnicas já
+estabelecidas na literatura.
 
-% Métodos automáticos são frequentemente utilizados para compor subconjuntos de atributos que capturam a maior parte da informação contida nos dados. Porém, como o nome sugere, esses métodos fornecem poucos, ou nenhum, dispositivos de interação o que torna o processo pouco intuitivo. Técnicas de visualização computacional têm sido utilizadas com sucesso na análise exploratória de grandes conjuntos de dados, pois permitem que o usuário utilize sua percepção visual para detectar padrões presentes nos dados e seu conhecimento sobre o domínio para interagir com os dados e orientar as análises. Assim, este projeto de mestrado tem como objetivo desenvolver mecanismos de interação sobre representações visuais para apoiar o usuário na tarefa de redução de dimensionalidade de forma mais intuitiva, ágil e confiável.
-
-% A proposta deste projeto é a elaboração de técnicas que possam ser utilizadas para analisar as relações e dependências de atributos de uma base de dados. Parte-se da hipótese de que a união entre os campos de visualização computacional e aprendizado de máquina pode viabilizar a confecção de tais técnicas.  
-
-\clearpage
+% Organização monografia
+A seguir apresenta-se um levantamento sobre outros trabalhos
+que também buscam transformar conjuntos de dados para
+torná-los mais representativos para o problema em estudo. 

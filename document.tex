@@ -1,0 +1,148 @@
+\documentclass[brazil, a4paper, 12pt, titlepage]{article}
+
+%\usepackage{ae} % a type of font
+\usepackage[T1]{fontenc}
+%\usepackage{times}
+\usepackage{amsmath}
+%\usepackage{amssymb}
+\usepackage[brazil]{babel}
+%\usepackage{bibentry}
+\usepackage[maxcitenames=1,backend=bibtex,firstinits=true]{biblatex}
+% \usepackage[style=authoryear,sorting=none,sorting=nty,firstinits=true]{biblatex}
+%\usepackage{caption}
+%\usepackage{color}
+\usepackage{colortbl}
+\usepackage{enumerate}
+\usepackage[top=30mm,bottom=25mm,left=30mm,right=25mm,twoside]{geometry}
+\usepackage{graphicx}
+%\usepackage{hlundef}
+\usepackage{hyperref}
+%\usepackage{ifthen}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+%\usepackage{longtable}
+%\usepackage{multirow}
+\usepackage{setspace}
+%\usepackage{slashbox}
+\usepackage{subcaption}
+%\usepackage{subfigure}
+%\usepackage{syntax}
+%\usepackage{tabularx}
+%\usepackage{textfit}
+%\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage{url}                  %% usa pacote ``url''
+\usepackage{verbatim}
+%\usepackage{wrapfig}
+\usepackage{xcolor}
+
+\addtolength{\skip\footins}{20pt} %Comando para separar o fim do texto do comeÃ§o do footnote
+
+% Comandos para facilitar a vida..
+\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\eg}{\textit{e.g.}}
+\newcommand{\obj}[1]{\mathbf{x}_#1}
+\newcommand{\pintado}{\cellcolor[gray]{0}}
+\definecolor{cinza}{rgb}{0.5,0.5,0.5}
+\definecolor{gray_c}{rgb}{0.5,0.5,0.5}
+
+\newcommand{\citet}{\cite}
+\renewcommand{\cite}{\parencite}
+
+\hypersetup{
+  colorlinks=true,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+\bibliography{referencias}
+
+\title{
+  \vspace{-4.5cm}
+  \includegraphics[width=15cm]{images/logo.png}\\
+  \vspace{6cm}
+  \renewcommand{\baselinestretch}{1.75}{%
+    \huge Dual Projections: \\ Uma nova abordagem para redução de dimensionalidade e transformação do espaço de atributos}
+  \vspace{2cm}
+  \Large \\
+  Proposta de Projeto de Mestrado \\
+}
+
+\author{
+  \textbf{Orientador:} Prof. Dr. Fernando Vieira Paulovich\\
+  \textbf{Aluno:} Francisco Morgani Fatore\\
+  %Universidade de São Paulo \\
+  %Instituto de Ciências Matemáticas e de Computação \\
+  %Avenida Trabalhador são-carlense, 400 - Centro\\
+  %CEP: 13566-590 - São Carlos - SP\\
+  %Phone: +55 (16) 3373-6634\\
+}
+
+\date{Fevereiro de 2013}
+
+% identation
+\setlength{\parindent}{0pt} % no ident
+\setlength{\parskip}{2.0ex plus 0.5ex minus 0.2ex} % paragraph spacing
+\setlength{\skip\footins}{2cm} % spacing between footer and text
+\setlength{\footnotesep}{0.5cm} % space between footer itens
+\renewcommand{\baselinestretch}{1.5} % line spacing
+
+\begin{document}
+
+% cover 
+\maketitle
+
+% abstract (max 20 lines)
+\clearpage
+\thispagestyle{empty}
+
+\begin{center}
+  \renewcommand{\baselinestretch}{1.0}{
+    \large{\textbf{Dual Projections: \\ Uma nova abordagem para redução de dimensionalidade e transformação do espaço de atributos}\\
+    \huge }
+    \vspace{1.5cm}
+    \normalsize{Instituto de Ciências Matemáticas e de Computação (ICMC)\\
+    Universidade de São Paulo (USP), São Carlos/SP, Brasil}\\
+    \vspace{1cm}
+    \normalsize{Orientador: Prof . Dr . Fernando Vieira Paulovich\\
+    Aluno: Francisco Morgani Fatore}
+  }
+  \vspace{1cm}
+\end{center}
+
+\input src/resumo
+
+\clearpage
+
+% list of contents
+\thispagestyle{empty}
+\tableofcontents  
+%\listoffigures
+%\listoftables
+\clearpage
+
+% begin of content
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input src/intro
+\input src/related
+\input src/proposal
+\input src/cron
+
+
+\clearpage
+\printbibliography
+
+\vspace{1.5cm}
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{c}
+    \hline
+    Prof. Dr. Fernando Vieira Paulovich\\
+    Orientador
+  \end{tabular} 
+\end{table}
+
+\end{document}

@@ -1,0 +1,29 @@
+\section{Introdução}
+
+A exploração de conjuntos de dados é um problema abordado com frequência em computação, tanto na área acadêmica quanto na indústria~\cite{Ngai2009,Harding2006}. Tal exploração tem como objetivo uma melhor compreensão dos fenômenos que afetam a sociedade em determinados aspectos. Com base nos novos conhecimentos adquiridos, espera-se melhorar o processo de tomadas de decisões como por exemplo, previsão de condições climáticas, diagnósticos de doenças, detecções de fraude, análise de mercado, etc.
+
+O procedimento para a exploração inicia pela coleta e armazenamento dos dados. Esta tarefa pode ser realizada por sensores, sistemas de monitoramento, simulações ou aplicações diversas que utilizam banco de dados. A meta é coletar o máximo de informação sobre um domínio e espera-se, posteriormente, extrair novos conhecimentos a partir dos dados coletados~\cite{Keim2002}. 
+
+Uma consequência direta de se coletar o máximo de informação é que dificilmente se conhecerá a dimensionalidade intrínseca dos dados, isto é, o conjunto de variáveis observadas que realmente são relevantes para a compreensão do fenômeno observado. Isso faz com que muitas vezes se utilize todos os atributos coletados nas investigações, o que eleva o custo computacional e dificulta as análises. 
+
+Quando o número de atributos (dimensões) utilizado nas análises for muito elevado, 50 variáveis por exemplo, há a ocorrência do problema conhecido como ``Maldição da Dimensionalidade''~\cite{Beyer1999}. Esta ``maldição'' refere-se ao fato de que algumas das propriedades geométricas de espaços bi ou tridimensionais não se mantém para espaços de maior dimensionalidade. Uma consequência prática de tal fato é que conforme o número de  dimensões aumenta, a distância entre um ponto e seu vizinho mais próximo tende a mesma distância deste ponto ao seu vizinho mais distante~\citet{Beyer1999}.
+
+Ao enfrentar as dificuldades impostas pela alta dimensionalidade, uma abordagem adotada com frequência é o uso de métodos de redução de dimensionalidade. O objetivo desses métodos é encontrar o menor espaço dimensional que é capaz de descrever os dados mantendo informações que são relevantes segundo determinado critério. Tal abordagem é  viabilizada pelo fato de que a maioria dos conjuntos de dados possuem atributos que não são ``importantes'' para a compreensão do fenômeno observado.
+
+A maioria dos métodos de redução de dimensionalidade são ditos métodos caixa-preta, ou seja, o usuário inspeciona apenas os dados de entrada e saída, desconhecendo o processamento interno realizado. Deste modo, esses métodos restringem a interação do usuário, o que além de tornar o processo pouco intuitivo, impede que o usuário modifique os resultados de acordo com a sua experiência na área. 
+
+A área de visualização computacional é uma alternativa interessante em relação aos métodos automáticos para a  exploração de conjuntos de dados, pois permite que o usuário utilize sua percepção visual para detectar padrões e seu conhecimento sobre o domínio para  orientar as análises. 
+
+%Porém, muitos dos métodos visuais são limitados pelo número de elementos e dimensões das bases de dados.
+
+% A área \emph{Visual Analytics}~\cite{Thomas2005} surgiu como uma união entre os métodos automáticos e visualização, seu objetivo é utilizar as vantagens das duas áreas para cobrirem suas limitações individuais. Essa união tem viabilizado avanços em diversas atividades de pesquisa, inclusive na tarefa de redução de dimensionalidade. 
+
+Este projeto de mestrado propõe o uso de projeções multidimensionais coordenadas entre itens e dimensões para apoiar o usuário na tarefa de redução de dimensionalidade de forma mais intuitiva, ágil e confiável. Além disso, propõe-se um método que permite ao usuário modificar os resultados obtidos, quando necessário, por meio da transformação do espaço de atributos.
+
+A obtenção de conjuntos de dados concisos, ou seja, conjuntos que não contém atributos irrelevantes ou redundantes, proporcionará  uma análise mais efetiva dos dados. Por exemplo, pode se melhorar o desempenho de agrupadores e classificadores de dados. Pretende-se avaliar as contribuições deste trabalho justamente pela quantificação do desempenho de tais métodos ao utilizar as técnicas desenvolvidas, seguida de uma comparação com técnicas já estabelecidas na literatura.
+
+% Métodos automáticos são frequentemente utilizados para compor subconjuntos de atributos que capturam a maior parte da informação contida nos dados. Porém, como o nome sugere, esses métodos fornecem poucos, ou nenhum, dispositivos de interação o que torna o processo pouco intuitivo. Técnicas de visualização computacional têm sido utilizadas com sucesso na análise exploratória de grandes conjuntos de dados, pois permitem que o usuário utilize sua percepção visual para detectar padrões presentes nos dados e seu conhecimento sobre o domínio para interagir com os dados e orientar as análises. Assim, este projeto de mestrado tem como objetivo desenvolver mecanismos de interação sobre representações visuais para apoiar o usuário na tarefa de redução de dimensionalidade de forma mais intuitiva, ágil e confiável.
+
+% A proposta deste projeto é a elaboração de técnicas que possam ser utilizadas para analisar as relações e dependências de atributos de uma base de dados. Parte-se da hipótese de que a união entre os campos de visualização computacional e aprendizado de máquina pode viabilizar a confecção de tais técnicas.  
+
+\clearpage

@@ -1,0 +1,67 @@
+\section{Proposta de Projeto}
+
+Nessa seção, a proposta desse projeto é detalhada, apresentando a motivação, objetivos, metodologia empregada e forma de análise dos resultados.
+
+\subsection{Motivação}
+
+De um modo geral, as técnicas de visualização computacional mapeiam relações entre os atributos dos dados ou entre as instâncias de dados. As projeções multidimensionais se encaixam no segundo grupo. Assim, não é possível entender ao certo quais relacionamentos foram responsáveis pelo resultado obtido somente pela análise de uma projeção. Logo, costuma-se utilizar outras técnicas para complementar a representação.
+
+No entanto, 
+
+Este projeto propõe aturar justamente sobre esta limitação das projeções multidimensionais. Ao oferecer uma visualização que combina gráficos entre itens e atributos, o usuário é capaz de melhor compreender os resultados obtidos. O processo de investigação utilizando esta abordagem é mais intuitivo que outras combinações propostas, pois o usuário se mantém sempre sobre a mesma metáfora visual, evitando assim uma sobrecarga do sistema cognitivo do usuário.
+
+A análise efetiva de dados requer uma discriminação entre dimensões relevantes e irrelevantes para que somente as primeiras sejam incluídas em futuras análises. Caso contrário, as dimensões irrelevantes podem esconder relações de interesse ao invés de ajudar a encontrá-las~\cite{Guo2003}. 
+
+A maioria das aplicações não são capazes de realizar essa discriminação e acabam dependendo que o usuário forneça os atributos de entrada. No entanto, nessas condições é pouco provável que o usuário encontre novos padrões nos dados, além dos esperados conforme seus conhecimentos sobre o assunto. Assim, o propósito exploratório da análise acaba se perdendo juntamente com a aquisição de novos conhecimentos.    
+
+Como mencionado em outras seções deste documento, métodos automáticos podem ser utilizados tanto para escolher quais atributos são relevantes, quanto para combiná-los em busca de se manter certas características dos dados. Porém, esses métodos evitam ao máximo a interação do usuário, o que além de tornar o processo pouco intuitivo, impede que o usuário modifique os resultados de acordo com seu conhecimento sobre o domínio.
+
+% PCA methods can only work well for linear relationships.
+% The impact of every original dimension is more or less still there.
+% Scalability to high dimensionality. Although efficient algorithms for K-means or EM-based clustering have been developed repeatedly using such clustering algorithms to evaluate a large number of candidates (i.e., subsets of dimensions) can still cause computational efficiency problems, especially when both d and n are large.
+
+A área de visualização computacional contribuiu com diversos trabalhos que buscam justamente apoiar o usuário da tarefa de redução de dimensionalidade. No entanto, nenhum desses trabalhos apresentam mecanismos adequados para a manipulação dos atributos. O conceito de projeção multidimensional das dimensões, apresentado em \cite{Yang2007}, e às visões múltiplas apresentadas em \cite{Turkay2011} servem como ponto de partida para este trabalho.
+
+A seguir os objetivos e metodologia deste projeto são apresentados.
+
+\subsection{Objetivos e Metodologia}
+
+Dentro do contexto apresentado anteriormente, o seguinte parágrafo representa a declaração do principal objetivo do projeto de mestrado aqui definido:
+
+\begin{quote}
+\emph{``Este projeto de mestrado tem como objetivo desenvolver mecanismos interativos sobre projeções multidimensionais coordenadas entre atributos e itens que auxiliem o usuário na tarefa de redução de dimensionalidade. Os mecanismos devem permitir tanto a seleção quanto a combinação de atributos. Caso os resultados não reflitam o conhecimento do usuário, este poderá manipular as projeções para transformar o espaço de atributos de modo a criar um modelo mais representativo.''}
+\end{quote}
+
+A metodologia proposta por este trabalho é inspirada em uma combinação entre as projeções de atributos de~\cite{Yang2004} e às visões duplamente coordenadas entre itens e atributos      de~\cite{Turkay2011}.
+
+O processo de projeção dos atributos inicia pela criação de uma matriz de distâncias que     busca capturar os relacionamentos entre as dimensões. Em seguida, com base nessa matriz,     aplica-se um método semelhante a MDS para posicionar os atributos em um plano bidimensional. Diferentemente de \cite{Yang2004}, aqui as dimensões não serão representadas por glifos, mas sim por pontos. Apesar de glifos serem capazes de fornecer informações adicionais sobre os   dados, no caso de projeções eles acentuam o problema de sobreposição de elementos.
+
+A etapa de coordenação entre visões dos itens e atributos será realizad
+
+
+% Certas exigências devem ser cumpridas a fim de se alcançar o objetivo proposto. Primeiramente, a interface responsável pela interação deve ser simples e intuitiva, sendo este é um dos grandes diferenciais da metodologia proposta. A complexidade dos métodos computacionais deve permitir que o usuário receba um retorno instantâneo das manipulações realizadas, o qual será responsável por guiar o usuário nas análises. 
+
+A metodologia proposta por este trabalho inicia pela escolha de uma medida para o cálculo da similaridade entre pares de dimensões. Com base nessas distâncias projeta-se as dimensões utilizando alguma técnica de projeção multidimensional, como MDS. Neste ponto permite-se que o usuário utilize os mecanismos interativos de redução de dimensionalidade e de transformação do espaço de atributos. Ele pode, por exemplo, construir um espaço dimensional reduzido que é prontamente apresentado em visualizações coordenadas. Finalmente, se o resultado obtido não for satisfatório, o usuário pode iniciar novamente o ciclo partindo do novo espaço dimensional construído, ou pode realizar novas manipulações sobre os dados.
+
+Para avaliar o procedimento proposto, adota-se a abordagem descrita a seguir.
+
+% Um aspecto fundamental para a qualidade das técnicas é o método responsável pelo cálculo da similaridade entre as dimensões. 
+
+% Uma tarefa fundamental para a execução deste trabalho é maneira como define-se a similaridade entre as dimensões. Deve-se ter em mente que a medida deve ser aplicada à valores numéricos e nominais.
+
+% Valores numéricos devem ser discretizados para serem comparáveis com valores nominais. Esta discretização não é um problema resolvido facilmente e inerentemente embute erros durante o processo.
+
+% As técnicas de MDS têm sido estudadas profundamente e são técnicas bem estabelecidas na literatura. Assim, espera-se que as posições geradas pelo MDS realmente transmitam a matriz de distância com uma qualidade aceitável. Sendo assim, a maior preocupação é calcular adequadamente a matriz de distâncias, pois diferentes medidas de correlação podem ser aplicadas (11,3,var) e cada uma delas tende a uma projeção distinta. 
+
+% Coord. apresenta o método MCE e o método NM (Nested Means) para discretização de valores contínuos. High-D também calcula MCE e usa NM para discretização. Utilizou MST (Guo 2002) para ordenar as dimensões com base em um grafo construído a partir da matriz de MCE.\cite{Zhang2006} calcula o coeficiente de correlação linear entre as dimensões e realiza um clustering hierárquico sobre a matriz de similaridade construída por este cálculo. Guiding utiliza a equação proposta por 2 para definir sua medida de similaridade. Permitem que o usuário investigue cada elemento da equação individualmente, caso necessário. Molina (15 de Guiding) descreve medidas baseadas em entropia e uma série de outras possibilidades. Guiding utilizou 18 para produzir um histograma otimizado para visualização. Este histograma inicial não é adequado para a comparação de features utilizando métodos estatísticos. Assim, aplicaram k-medoids em um pré-processamento secundário. Utilizam k-medoids pela sua simplicidade e tolerância a outliers.
+
+\subsection{Forma de análise dos resultados}
+
+Ao reduzir o número de atributos irrelevantes ou redundantes, pode-se melhorar o desempenho computacional e a precisão das técnicas operando sobre os dados, como agrupadores e classificadores de dados. Pretende-se avaliar as contribuições deste trabalho justamente pela quantificação do desempenho de tais métodos ao utilizar as técnicas desenvolvidas, seguida de uma comparação com técnicas já estabelecidas na literatura.
+
+% O popular método K-Means será utilizado neste trabalho para se avaliar Para se avaliar o resultado obtido por agrupadores de dados, frequemente utiliza-se a medida da silheta e o índice I. A silhueta mede a .... O indice I é utilizado para...
+
+% Falo de SVM-Precisão, Recall (FN?) e sei la o que...
+
+\clearpage
+

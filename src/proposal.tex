@@ -4,10 +4,6 @@ Nesta seção, a proposta deste projeto é detalhada, apresentando a motivação
 
 \subsection{Motivação}
 
-Na Seção~\ref{sec:related} apresentou-se ferramentas visuais
-que buscam modificar os conjuntos de dados para torná-los
-mais representativos para o problema em estudo. 
-
 O uso de ferramentas visuais que operam sobre grandes
 volumes de dados não é exclusivo aos trabalhos relacionados
 ao aqui proposto. Na verdade, toda a área de
@@ -52,43 +48,227 @@ Levando em consideração os aspectos mencionados nos
 parágrafos acima: simplicidade da ferramenta, diversidade de
 mecanismos de interação e avaliação global e local dos
 dados, este projeto de mestrado se baseia no uso de
-\emph{Biplots} para desenvolver uma ferramenta que apresente
-essas características e ao mesmo tempo seja capaz de cobrir
-as limitações dos trabalhos do atual estado da arte.
+\emph{Biplots}~\cite{Gabriel1971} para desenvolver uma
+ferramenta que apresente essas características e ao mesmo
+tempo seja capaz de cobrir as limitações dos trabalhos do
+atual estado da arte.
 
 Mais especificamente o objetivo deste trabalho pode ser
 declarado da seguinte maneira:
 
 \begin{quote} \emph{``Este projeto de mestrado tem como
         objetivo desenvolver uma ferramenta visual
-        interativa que permita aos usuários modificarem
-        conjuntos de dados para torná-los mais
-        representativos. As modificações serão realizadas a
-        partir de três principais mecanismos de interação:
-        seleção, extração e construção de atributos.
-        Com dados melhor representados, os métodos que
-        operam sobre eles, como classificadores e
-        agrupadores de dados, devem apresentar melhores
-    resultados. Será por meio de uma quantificação dessa
-melhoria que será feita a validação da nova ferramenta
-desenvolvida.''} \end{quote}
+        interativa para a transformação de dados
+        multidimensionais. A metodologia proposta se baseia
+        no uso de biplots e em três principais
+        mecanismos de interação: seleção, extração e
+        construção de atributos. Com dados melhor
+        representados, os métodos que operam sobre eles,
+        como classificadores e agrupadores de dados, devem
+        apresentar melhores resultados. Será por meio de uma
+        quantificação dessa melhoria que será feita a
+validação da nova ferramenta desenvolvida.''} \end{quote}
 
-A seguir apresenta-se a metodologia proposta para alcançar
-esse objetivo.
+Um biplot pode ser entendido como uma extensão dos gráficos
+de dispersão (\emph{scatterplots}). Pela Figura X é possível
+notar a relação entre as duas representações. Observa-se que
+enquanto em um gráfico de dispersão apresenta-se apenas as
+relações entre as instâncias de dados, no biplot é possível
+identificar também como os atributos se relacionam entre si.
+
+Uma outra característica de biplots que os tornam
+ferramentas excepcionais é a existência de uma relação
+direta entre as representações das instâncias de dados e os
+atributos. Por exemplo, na Figura X é possível determinar
+quais países blah.
+
+Essas características de biplots fazem com que seu uso seja
+propício para a construção de ferramentas interativas de
+transformação de dados multidimensionais. No entanto,
+desconhece-se qualquer trabalho na literatura que faça uso
+de tal representação gráfica para a redução de
+dimensionalidade ou para a construção interativa de
+atributos. 
+
+A seguir apresenta-se a metodologia proposta por este
+trabalho. Descreve-se o modo de construção de biplots
+e os mecanismos de interação propostos sobre tal representação.
 
 \subsection{Metodologia}
 
-Apesar de biplot ser velho...
-Acredita-se que o emprego de \emph{Biplots} proporcionará
+A construção de um \emph{biplot} parte do princípio de que qualquer
+matriz $S$ $n \times m$ de posto $r$  pode
+ser representada por:
+
+\begin{equation}
+    S = XY^T
+\end{equation}
+
+onde $X$ é uma matriz $n \times r$ e $Y$ uma matriz $m
+\times r$, ambas de posto $r$~\cite{Gabriel1971}. Os valores
+internos da matriz $S$ são o produto escalar entre os
+vetores correspondentes de $X$ e $Y$. Por exemplo, em:
+
+\begin{equation}
+    \left( \begin{array}{rrrr}
+        8 &  2 &  2 & -6 \\
+        5 &  0 &  3 & -4 \\
+       -2 & -3 &  3 &  1 \\
+            2 &  3 & -3 & -1 \\
+        4 &  6 & -6 & -2\end{array}
+\right) = \left( \begin{array}{rr}
+         2 & 2 \\
+         1 & 2 \\
+        -1 & 1 \\
+         1 & -1 \\
+         2 & -2\end{array} 
+\right) \left( \begin{array}{rrrr}
+        3 &  2 &-1 & -2 \\
+    1 & -1 & 2 & -1 \end{array} 
+\right)
+\end{equation}
+
+o elemento $S_{2,3}$, 3, da matriz é o
+produto escalar entre $X_2$ e $Y^T_3$, $1 \times \left( -1
+\right) + 2 \times 2$. Em casos como o deste
+exemplo, onde o posto de $S$ é dois, é possível plotar os
+pontos de $X$ e $Y$ no plano. Os pontos referentes a $X$ são
+os \emph{pontos do biplot}, enquanto os referentes a $Y$ são
+os \emph{eixos do biplot}.
+
+Dentre os métodos para se decompor a matriz $S$ em $X$ e
+$Y$, o mais adotado é a decomposição em valores singulares,
+mais conhecido como SVD (\emph{Singular value
+decomposition}).
+
+Sabendo que o posto de uma matriz pode ser entendido como o
+número de variáveis independentes, ao lidar com dados
+multidimensionais é pouco provável que exista somente duas
+variáveis independentes entre si. Em situações como essa
+algum tipo de aproximação deve ser aplicada sobre os dados
+para possibilitar a criação do biplot. 
+
+
+
+
+
+
+
+
+Uma das aplicações de SVD é justamente calcular o posto da
+matriz. Assim, na metodologia aqui proposta inicialmente
+aplica-se SVD sobre os dados e verifica-se o posto da
+matriz. Se o valor for igual a dois então os dados já são
+compatíveis para a construção do biplot e nenhuma outra
+operação é necessária. Caso contrário, realiza-se a
+aproximação aproveitando-se ao máximo os cálculos realizados
+inicialmente.
+
+Uma vez construída a representação gráfica dos dados deve-se
+desenvolver os três mecanismos interativos de transformação:
+seleção, extração e construção.
+
+O mecanismo de seleção age tanto sobre os itens quanto
+dimensões. Do ponto de vista de itens, seu propósito é
+possibilitar que o usuário crie subconjuntos dos dados,
+buscando, por exemplo, a remoção de \emph{outliers} ou a
+inspeção de um grupo de interesse. 
+
+Nas seleções sobre dimensões deseja-se solucionar
+basicamente dois problemas. O primeiro, chamado de mínimo
+ótimo (\emph{minimal optimal})~\cite{Kohavi1997}, consiste
+em construir um subconjunto dos atributos de entrada
+evitando ao máximo a redundância entre eles. Um caso prático
+deste problema está na construção de um classificador,
+onde ao se evitar redundância entre os atributos de entrada
+pode-se fazer com que o método obtenha ganhos tanto no tempo de
+execução quanto na qualidade dos resultados obtidos. Já o
+segundo problema, conhecido como todos relevantes (\emph{all
+relevant})~\cite{Nilsson2007}, equivale a encontrar todos os
+atributos que são de algum modo relevantes para a
+compreensão do fenómeno observado. Uma aplicação real deste
+problema pode ser encontrada no contexto de análise
+de expressões gênicas, onde deseja-se,
+identificar quais genes apresentam maior relação com o
+diagnóstico de alguma doença. 
+
+O mecanismo de extração é aplicado em situações onde a
+seleção não é suficiente para sintetizar as informações
+contidas nos dados. Pode ser utilizado para extrair
+atributos de um subconjunto de atributos. No entanto, a
+extração depende de métodos automáticos como PCA, assim
+torna-se um mecanismo menos intuitivo ao usuário do que a
+seleção. 
+
+O mecanismo de construção interativa de atributos é o mais
+complexo entre os três propostos e por isso exige um maior
+detalhamento.
+
+Como mencionado anteriormente, um aspecto importante de
+ferramentas de visualização é a avaliação da incerteza dos
+resultados. Como um biplot é também um mapeamento de
+elementos no plano, ferramentas para avaliação deste tipo de
+representação podem ser reaproveitadas. As mais populares
+são \emph{stress}~\cite{Kruskal1964}, \emph{Neighborhood
+Hit}~\cite{Paulovich2008} e Neighborhood
+\emph{Preservation}~\cite{Paulovich2008a}. Tais medidas
+podem ser transmitidas nas representações visuais por meio
+do uso de cores. 
+
+A seguir apresenta-se como os resultados obtidos serão avaliados.
 
 \subsection{Forma de análise dos resultados}
 
-Ao reduzir o número de atributos irrelevantes ou redundantes, pode-se melhorar o desempenho computacional e a precisão das técnicas operando sobre os dados, como agrupadores e classificadores de dados. Pretende-se avaliar as contribuições deste trabalho justamente pela quantificação do desempenho de tais métodos ao utilizar as técnicas desenvolvidas, seguida de uma comparação com técnicas já estabelecidas na literatura.
+Ao reduzir o número de atributos irrelevantes ou
+redundantes, pode-se melhorar o desempenho computacional e a
+precisão das técnicas operando sobre os dados, como
+agrupadores e classificadores de dados. Pretende-se avaliar
+as contribuições deste trabalho justamente pela
+quantificação do desempenho de tais métodos ao utilizar as
+técnicas desenvolvidas, seguida de uma comparação com
+técnicas já estabelecidas na literatura.
 
 % O popular método K-Means será utilizado neste trabalho para se avaliar Para se avaliar o resultado obtido por agrupadores de dados, frequemente utiliza-se a medida da silheta e o índice I. A silhueta mede a .... O indice I é utilizado para...
 
 % Falo de SVM-Precisão, Recall (FN?) e sei la o que...
 
+% Tenho que falar aqui que vou aplicar diferentes métodos de
+% redução (eventualmente ter que explicar os que eu escolhi
+% cada um, de preferência falar que cada um tem uma
+% característica específica) e em seguida vou verificar a
+% qualidade da classificação e o tempo de execução do
+% classificador.  Vou comparar com outros métodos de redução.
+% Em alguns trabalhos~\cite{Joshi2007} a comparação é feita
+% sobre a taxa de acertos da classificação com os dados
+% originais e com os dados reduzidos com a técnica proposta.
+% No entanto, esta validação pode ser questionada, pois
+% desconsidera a influencia que outras técnicas de redução
+% poderiam ter nos resultados.  Para se comprar com seleção de
+% características, \cite{Guyon2003} diz para usar um
+% classificador linear (linear SBM) e selecionar as variáveis
+% de duas maneiras: por meio de um ranking a partir do
+% coeficiente de correlação ou informação mútua; ou pelo uso
+% de um método de forward (ou backward) selection.
+% \cite{Medeiros2011} apresenta três índices para se comparar
+% diferentes técnicas de redução. Aponta que devido a
+% heterogeneidade dos métodos, certas convenções devem ser
+% estabelecidas para se obter uma comparação justa.  A forma
+% mais adotada na literatura para a avaliação de métodos de
+% redução de dimensionalidade é a comparação dos erros obtidos
+% em tarefas de classificação ao utilizar diferentes técnicas.
+% Ao reduzir o número de atributos irrelevantes ou
+% redundantes, pode-se melhorar o desempenho computacional e a
+% precisão das técnicas operando sobre os dados, como
+% agrupadores e classificadores de dados. Pretende-se avaliar
+% as contribuições deste trabalho justamente pela
+% quantificação do desempenho de tais métodos ao utilizar as
+% técnicas desenvolvidas, seguida de uma comparação com
+% técnicas já estabelecidas na literatura. O popular método K
+% Means será utilizado neste trabalho para se avaliar Para se
+% avaliar o resultado obtido por agrupadores de dados,
+% frequentemente utiliza-se a medida da silhueta e o índice I.
+% A silhueta mede a .... O índice I é utilizado para... Falo
+% de Sam Precisão, Recall (FAN?) e sei la o que...
 
 
 

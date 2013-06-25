@@ -97,10 +97,10 @@ e os mecanismos de interação propostos sobre tal representação.
 \subsection{Metodologia}
 
 A construção de um \emph{biplot} parte do princípio de que qualquer
-matriz $S$ $n \times m$ de posto $r$  pode
+matriz $S$ de tamanho $n \times m$ e posto $r$  pode
 ser representada por:
 
-\begin{equation}
+\begin{equation}\label{eq:bp}
     S = XY^T
 \end{equation}
 
@@ -131,38 +131,57 @@ vetores correspondentes de $X$ e $Y$. Por exemplo, em:
 o elemento $S_{2,3}$, 3, da matriz é o
 produto escalar entre $X_2$ e $Y^T_3$, $1 \times \left( -1
 \right) + 2 \times 2$. Em casos como o deste
-exemplo, onde o posto de $S$ é dois, é possível plotar os
+exemplo, onde o posto da matriz é dois, é possível plotar os
 pontos de $X$ e $Y$ no plano. Os pontos referentes a $X$ são
 os \emph{pontos do biplot}, enquanto os referentes a $Y$ são
 os \emph{eixos do biplot}.
 
-Dentre os métodos para se decompor a matriz $S$ em $X$ e
-$Y$, o mais adotado é a decomposição em valores singulares,
-mais conhecido como SVD (\emph{Singular value
-decomposition}).
+Na prática, o posto de uma matriz equivale ao menor valor
+entre $n$ e $m$~\cite{Greenacre2010}. Assim, ao lidar com
+grandes conjuntos de dados multidimensionais esse valor será
+maior que dois e consequentemente não será possível mapear
+os elementos das matrizes $X$ e $Y$ no plano. Para contornar
+tal situação é comum aproximar a matriz de dados original a
+uma matriz de posto igual a dois e utilizar essa aproximação
+para criar a representação visual.
 
-Sabendo que o posto de uma matriz pode ser entendido como o
-número de variáveis independentes, ao lidar com dados
-multidimensionais é pouco provável que exista somente duas
-variáveis independentes entre si. Em situações como essa
-algum tipo de aproximação deve ser aplicada sobre os dados
-para possibilitar a criação do biplot. 
+Uma das maneiras mais adotadas para encontrar essa
+aproximação é por meio da decomposição em valores
+singulares, ou simplesmente SVD (\emph{Singular value
+decomposition})~\cite{Kalman1996}. O uso do método SVD é
+adequado para a construção de biplots, pois além de
+resolver o problema da aproximação, seu resultado possui
+exatamente a forma exigida pela formulação de biplots,
+apresentada na Equação~\ref{eq:bp}.
 
+Basicamente, o método SVD estabelece que qualquer matriz $Y$
+de tamanho $n \times m$ e posto $r$ pode ser expressa como o
+produto de três matrizes:
 
+\begin{equation}
+    Y = UD_{\alpha}V^T
+\end{equation}
 
+onde $U$ é uma matriz $n \times r$, $V$ é uma matriz $m
+\times r$ e $D_\alpha$ é uma matriz diagonal $r \times r$
+com números positivos $\alpha_1,\alpha_2,\ldots,\alpha_r$ em
+uma ordem decrescente. 
 
+Para se obter o formato estabelecido na Equação~\ref{eq:bp}
+basta atribuir a matriz $D$ às outras matrizes. Essa
+atribuição impacta no resultado visual do biplot. Ao se
+atribuir $D$ a $U$ destaca-se as relações entre as
+instâncias de dados. Quando isso é feito em relação a $V$
+destaca-se as relações entre os atributos. E quando se
+atribui parcialmente $D$ a ambas matrizes $U$ e $V$ obtém-se
+um biplot simétrico que não prioriza nenhuma característica
+dos dados.
 
-
-
-
-Uma das aplicações de SVD é justamente calcular o posto da
-matriz. Assim, na metodologia aqui proposta inicialmente
-aplica-se SVD sobre os dados e verifica-se o posto da
-matriz. Se o valor for igual a dois então os dados já são
-compatíveis para a construção do biplot e nenhuma outra
-operação é necessária. Caso contrário, realiza-se a
-aproximação aproveitando-se ao máximo os cálculos realizados
-inicialmente.
+Independentemente do posto da matriz ser igual a dois,
+utiliza-se apenas os dois primeiros vetores de $U$ e $V$
+para a criação da representação visual. Assim, a qualidade do
+resultado dependerá do erro da aproximação e da
+dimensionalidade intrínseca dos dados. 
 
 Uma vez construída a representação gráfica dos dados deve-se
 desenvolver os três mecanismos interativos de transformação:
@@ -195,10 +214,10 @@ diagnóstico de alguma doença.
 O mecanismo de extração é aplicado em situações onde a
 seleção não é suficiente para sintetizar as informações
 contidas nos dados. Pode ser utilizado para extrair
-atributos de um subconjunto de atributos. No entanto, a
-extração depende de métodos automáticos como PCA, assim
-torna-se um mecanismo menos intuitivo ao usuário do que a
-seleção. 
+atributos a partir de um subconjunto de atributos. No
+entanto, a extração depende de métodos automáticos como PCA,
+assim torna-se um mecanismo menos intuitivo ao usuário do
+que a seleção. 
 
 O mecanismo de construção interativa de atributos é o mais
 complexo entre os três propostos e por isso exige um maior
@@ -221,54 +240,21 @@ A seguir apresenta-se como os resultados obtidos serão avaliados.
 
 Ao reduzir o número de atributos irrelevantes ou
 redundantes, pode-se melhorar o desempenho computacional e a
-precisão das técnicas operando sobre os dados, como
-agrupadores e classificadores de dados. Pretende-se avaliar
-as contribuições deste trabalho justamente pela
-quantificação do desempenho de tais métodos ao utilizar as
-técnicas desenvolvidas, seguida de uma comparação com
-técnicas já estabelecidas na literatura.
+precisão das técnicas operando sobre os dados.  Pretende-se
+avaliar as contribuições deste trabalho justamente pela
+quantificação do desempenho de tais técnicas ao utilizar as
+técnicas desenvolvidas.
 
-% O popular método K-Means será utilizado neste trabalho para se avaliar Para se avaliar o resultado obtido por agrupadores de dados, frequemente utiliza-se a medida da silheta e o índice I. A silhueta mede a .... O indice I é utilizado para...
+Normalmente as
+comparações são feitas com base na taxa de acerto da
+classificação com os dados originais e com os dados após a
+redução de dimensionalidade~\cite{Guyon2003,Joshi2007}. No
+entanto, devido a heterogeneidade dos métodos de redução
+não é trivial definir uma métrica única para as
+avaliações~\cite{Medeiros2011}. Assim, considera-se também
+o uso de medidas de avaliação de agrupadores de dados, como
+a medida da silhueta e o índice I.
 
-% Falo de SVM-Precisão, Recall (FN?) e sei la o que...
-
-% Tenho que falar aqui que vou aplicar diferentes métodos de
-% redução (eventualmente ter que explicar os que eu escolhi
-% cada um, de preferência falar que cada um tem uma
-% característica específica) e em seguida vou verificar a
-% qualidade da classificação e o tempo de execução do
-% classificador.  Vou comparar com outros métodos de redução.
-% Em alguns trabalhos~\cite{Joshi2007} a comparação é feita
-% sobre a taxa de acertos da classificação com os dados
-% originais e com os dados reduzidos com a técnica proposta.
-% No entanto, esta validação pode ser questionada, pois
-% desconsidera a influencia que outras técnicas de redução
-% poderiam ter nos resultados.  Para se comprar com seleção de
-% características, \cite{Guyon2003} diz para usar um
-% classificador linear (linear SBM) e selecionar as variáveis
-% de duas maneiras: por meio de um ranking a partir do
-% coeficiente de correlação ou informação mútua; ou pelo uso
-% de um método de forward (ou backward) selection.
-% \cite{Medeiros2011} apresenta três índices para se comparar
-% diferentes técnicas de redução. Aponta que devido a
-% heterogeneidade dos métodos, certas convenções devem ser
-% estabelecidas para se obter uma comparação justa.  A forma
-% mais adotada na literatura para a avaliação de métodos de
-% redução de dimensionalidade é a comparação dos erros obtidos
-% em tarefas de classificação ao utilizar diferentes técnicas.
-% Ao reduzir o número de atributos irrelevantes ou
-% redundantes, pode-se melhorar o desempenho computacional e a
-% precisão das técnicas operando sobre os dados, como
-% agrupadores e classificadores de dados. Pretende-se avaliar
-% as contribuições deste trabalho justamente pela
-% quantificação do desempenho de tais métodos ao utilizar as
-% técnicas desenvolvidas, seguida de uma comparação com
-% técnicas já estabelecidas na literatura. O popular método K
-% Means será utilizado neste trabalho para se avaliar Para se
-% avaliar o resultado obtido por agrupadores de dados,
-% frequentemente utiliza-se a medida da silhueta e o índice I.
-% A silhueta mede a .... O índice I é utilizado para... Falo
-% de Sam Precisão, Recall (FAN?) e sei la o que...
-
-
-
+Uma outra maneira que será utilizada para se avaliar a
+representatividade dos conjuntos de dados é processá-los com
+o intuito de classificação.

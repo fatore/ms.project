@@ -117,37 +117,15 @@ Em busca de construir espaços de baixa dimensionalidade mais
 intuitivamente do que pelo uso de métodos automáticos,
 \citet{Yang2003} desenvolveram o método de redução de
 dimensionalidade chamado VHDR (\emph{Visual Hierarchical
-Dimensions Reduction}). O funcionamento deste método é
-ilustrado pela Figura~\ref{fig:vhdr1}. Inicialmente (1),
+Dimensions Reduction}). Neste método, inicialmente
 constrói-se uma organização hierárquica dos atributos com
-base na similaridade entre as dimensões. Em seguida (2), o
+base na similaridade entre as dimensões. Em seguida, o
 usuário define os níveis da hierarquia que devem ser
-considerados pela última etapa do processo. Finalmente (3), o
+considerados pela última etapa do processo. Finalmente, o
 usuário por meio de um método automático ou de seu
 conhecimento sobre os dados, escolhe dimensões
 representativas para os níveis definidos, reduzindo assim a
 dimensionalidade dos dados. 
-
-\begin{figure}[h!]
-  \centering
-  \begin{subfigure}[b]{0.35\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{images/vhdr1.png}
-    \caption{}
-    \label{fig:vhdr1}
-  \end{subfigure}%
-  \hspace{1cm} %add desired spacing between images, e. g. ~, \quad, \qquad etc.
-  \begin{subfigure}[b]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{images/vhdr2.png}
-    \caption{}
-    \label{fig:vhdr2}
-  \end{subfigure} \caption[VHDR: Visual Hierarchical
-  Dimension Reduction]{(a) Ilustração do funcionamento do
-  VHDR. (b) Exemplo da representação gráfica adotada pelos
-  autores do VHDR. Ambas imagens extraídas de
-  \cite{Yang2003}.}
-\end{figure}
 
 O processo de construção da hierarquia é muito semelhante
 aos algoritmos de agrupamento hierárquico. A distinção é que
@@ -156,14 +134,6 @@ modo, qualquer método de agrupamento pode ser aplicado,
 exigindo-se apenas que o agrupamento resulte em uma
 estrutura hierárquica, no caso uma árvore, onde cada
 dimensão seja representada por um nó folha da árvore. 
-
-A representação gráfica utilizada no VHDR é a
-\emph{InterRing}~\cite{Yang2002} e pode
-ser observada na Figura~\ref{fig:vhdr2}. O nó raiz da árvore
-é representado pelo círculo mais interno e os nós folhas
-pelos elementos posicionados na borda. As cores são
-utilizadas para destacar grupos de dimensões com
-características em comum. 
 
 Os autores do VHDR desenvolveram uma extensão chamada DOSFA
 (\emph{Dimension Ordering Spacing and Filtering
@@ -203,54 +173,31 @@ Relation}). A abordagem une os conceitos de MDS e glifos para
 representar as dependências entre as dimensões de uma base
 de dados. 
 
-\begin{figure}[h!]
-  \centering
-  \begin{subfigure}[b]{0.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{images/var1.png}
-    \caption{}
-    \label{fig:var1}
-  \end{subfigure}%
-  ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
-  \begin{subfigure}[b]{0.475\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{images/var2.png}
-    \caption{}
-    \label{fig:var2}
-  \end{subfigure}
-  \caption[VaR: Value and Relation]
-      {(a) Exemplo da ferramenta VaR. Imagem extraída de
-      \cite{Yang2004}. (b) Exemplo da representação
-  alternativa proposta como extensão da ferramenta VaR.
-  Imagem extraída  de \cite{Yang2007}.}
-\end{figure}
-
 Na representação visual da ferramenta VaR, cada dimensão é
 representada por um glifo e seus posicionamentos refletem a
 similaridade entre as dimensões, de modo que glifos que se
 encontram próximos indicam atributos que apresentam alguma
-relação entre si. Como mostra a Figura~\ref{fig:var1}, de
-acordo com o posicionamento dos glifos no plano o usuário
-pode compreender como as dimensões se relacionam entre si. O
-usuário é capaz de construir espaços dimensionais reduzidos
-que conservam certas características dos dados por meio de
-seleções manuais sobre os dados ou pelo uso de um método automático.
-Este método automático parte de uma dimensão de referência e
-de um limiar definido pelo usuário e retorna as dimensões
-mais semelhantes à esta referência.
+relação entre si. De acordo com o posicionamento dos glifos
+no plano o usuário pode compreender como as dimensões se
+relacionam entre si. O usuário é capaz de construir espaços
+dimensionais reduzidos que conservam certas características
+dos dados por meio de seleções manuais sobre os dados ou
+pelo uso de um método automático.  Este método automático
+parte de uma dimensão de referência e de um limiar definido
+pelo usuário e retorna as dimensões mais semelhantes à esta
+referência.
 
-Observando a Figura~\ref{fig:var1} é possível notar que o
-uso de glifos faz com que ocorram sobreposições, pois cada
-glifo requer um espaço relativamente grande para que seja
-observado adequadamente.  As sobreposições dificultam as
-análises de regiões de interesse e podem fazer com que o
-usuário alcance conclusões inválidas, devido a oclusão de
-algum elemento importante.  
+No entanto, o uso de glifos faz com que ocorram
+sobreposições, pois cada glifo requer um espaço
+relativamente grande para que seja observado adequadamente.
+As sobreposições dificultam as análises de regiões de
+interesse e podem fazer com que o usuário alcance conclusões
+inválidas, devido a oclusão de algum elemento importante.  
 
 Buscando tratar o problema de sobreposição de elementos,
-\citet{Yang2007} desenvolveram a extensão ilustrada na
-Figura~\ref{fig:var2}, onde apresentaram alternativas para o
-mapeamento dos glifos no plano. No entanto, a alternativa
+\citet{Yang2007} desenvolveram uma extensão para a
+ferramenta VaR, onde apresentaram alternativas para o
+mapeamento dos glifos no plano. Porém, a alternativa
 proposta estabelece uma distância fixa entre os elementos,
 consequentemente perde-se a informação de quanto duas
 dimensões são similares entre si. Assim, o resultado obtido
@@ -393,24 +340,17 @@ base na manipulação sobre amostras dos itens. Os autores
 fazem uso de mapeamento de elementos no plano para permitir
 interações intuitivas sobre os dados. 
 
-A Figura~\ref{fig:ud} apresenta  o funcionamento dessa
-ferramenta. Inicialmente, o usuário manipula uma amostra dos
-dados buscando  agrupar elementos que considera similares.
-Em seguida, as manipulações realizadas sobre a amostra são
-refletidas para o conjunto de dados original, fazendo com
-que este reflita a opinião do usuário em relação ao critério
-de similaridade entre os elementos. Este processo pode ser
-repetido até que se atinja o resultado esperado. Observa-se
-que para este exemplo a transformação do espaço foi bem
-sucedida, pois foram reveladas estruturas que até então não
-eram identificáveis.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=10cm]{images/ud.png}
-    \caption{Ferramenta desenvolvida por \cite{Gladys2013}.}
-    \label{fig:ud}
-\end{figure}
+Na ferramenta de \citeauthor{Gladys2013}, inicialmente o
+usuário manipula uma amostra dos dados buscando  agrupar
+elementos que considera similares.  Em seguida, as
+manipulações realizadas sobre a amostra são refletidas para
+o conjunto de dados original, fazendo com que este reflita a
+opinião do usuário em relação ao critério de similaridade
+entre os elementos. Este processo pode ser repetido até que
+se atinja o resultado esperado. Observa-se que para este
+exemplo a transformação do espaço foi bem sucedida, pois
+foram reveladas estruturas que até então não eram
+identificáveis.
 
 Por se tratar de uma abordagem pioneira, essa ferramenta
 possui diversas limitações. Por exemplo, a forma como a

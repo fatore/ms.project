@@ -7,7 +7,8 @@
 %\usepackage{amssymb}
 \usepackage[brazil]{babel}
 %\usepackage{bibentry}
-\usepackage[maxcitenames=1,backend=bibtex,firstinits=true]{biblatex}
+\usepackage[maxcitenames=1,backend=bibtex,firstinits=true,
+doi=false,url=false,isbn=false]{biblatex}
 % \usepackage[style=authoryear,sorting=none,sorting=nty,firstinits=true]{biblatex}
 %\usepackage{caption}
 %\usepackage{color}
@@ -85,7 +86,7 @@ Multidimensionais}
   %Phone: +55 (16) 3373-6634\\
 }
 
-\date{Fevereiro de 2013}
+\date{Julho de 2013}
 
 % identation
 \setlength{\parindent}{0pt} % no ident
@@ -118,6 +119,7 @@ Multidimensionais}
 \end{center}
 
 \input src/resumo
+% \input src/abstract
 
 \clearpage
 
@@ -131,8 +133,11 @@ Multidimensionais}
 \setcounter{page}{1}
 
 \input src/intro
+\clearpage
 \input src/related
+\clearpage
 \input src/proposal
+\clearpage
 \input src/cron
 
 \clearpage

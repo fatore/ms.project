@@ -76,10 +76,7 @@ ativamente nos processos e na geração dos resultados é um
 dos grandes benefícios desses métodos. Deste
 modo, a seguir serão apresentados os trabalhos desta 
 vertente que buscam executar redução de dimensionalidade de
-forma interativa. Trabalhos que não somente fazem uso da
-capacidade perceptiva humana, mas que também permitem
-que o usuário participe ativamente na geração dos resultados
-com o seu conhecimento sobre o domínio.
+forma interativa.
 
 \subsubsection{Matrizes de Correlação}\label{sss:cormat}
 
@@ -93,7 +90,7 @@ subconjuntos de atributos com características de interesse.
 Devido à sua simplicidade, esse tipo de representação têm
 sido adotada por diversos métodos visuais que viabilizam a
 investigação de atributos de conjuntos de
-dados\citet{Friendly2002,Guo2003,MacEachren2003,
+dados~\citet{Friendly2002,Guo2003,MacEachren2003,
 RBF2004,May2011ss,Johansson2009,Ingram2010,May2011}. Eles
 diferem na maneira de como é construída a matriz de
 correlação e de quais recursos são disponibilizados para o
@@ -102,14 +99,14 @@ problema geral desses trabalhos é que certas análises podem
 exigir demasiado esforço do usuário devido à necessidade de
 se explorar individualmente cada dimensão ou avaliar
 par-a-par as relações entre atributos. Com a ocorrência de
-dependências não lineares este problema torna-se ainda maior
+dependências não lineares este problema se torna ainda maior
 e o usuário pode se perder em suas análises e não extrair
 novos conhecimentos dos resultados. 
 
-A seguir apresenta-se alternativas às matrizes de correlação
-para se apresentar medidas de correlação. Essas abordagens
-fornecem mecanismos mais diretos para se reduzir a
-dimensionalidade dos conjuntos de dados. 
+A seguir apresenta-se representações visuais alternativas às
+matrizes de correlação. Essas abordagens fornecem mecanismos
+mais diretos para se reduzir a dimensionalidade dos
+conjuntos de dados. 
 
 \subsubsection{Hierarquias de Dimensões}
 
@@ -149,7 +146,7 @@ representativas ou redundantes, de modo que se certas
 dimensões apresentam alta similaridade entre si, então
 apenas uma delas é mantida, ou se certas dimensões
 apresentam pouca relevância, então são descartadas. A grande
-complexidade do processo de filtragem esta no modo como se
+complexidade do processo de filtragem está no modo como se
 define a redundância e a importância entre as dimensões. Um
 método semelhante para filtragem de atributos irrelevantes
 foi proposto por \citet{Artero2006}.
@@ -187,8 +184,8 @@ parte de uma dimensão de referência e de um limiar definido
 pelo usuário e retorna as dimensões mais semelhantes à esta
 referência.
 
-No entanto, o uso de glifos faz com que ocorram
-sobreposições, pois cada glifo requer um espaço
+Um problema dessa ferramenta é que o uso de glifos faz com
+que ocorram sobreposições, pois cada glifo requer um espaço
 relativamente grande para que seja observado adequadamente.
 As sobreposições dificultam as análises de regiões de
 interesse e podem fazer com que o usuário alcance conclusões
@@ -280,8 +277,8 @@ nesse processo para tornar essas ``caixas pretas'' mais
 intuitivas. 
 
 A ferramenta iPCA~\cite{Jeong2009}, por exemplo, provê meios
-para o usuário manipular os parâmetros da técnica PCA e,
-assim, ser capaz de entender mais facilmente as
+para o usuário manipular a importância de cada atributo na
+técnica PCA e, assim, ser capaz de entender mais facilmente as
 transformações realizadas sobre os dados. Similarmente,
 \citet{Williams2004} permitem que o usuário guie o processo
 de redução de dimensionalidade a partir de métodos MDS ao
@@ -309,17 +306,13 @@ contexto de classificação de dados. Nesses métodos a redução
 de dimensionalidade reflete diretamente na qualidade das
 classificações. 
 
-Um problema das ferramentas que criam visualizações de métodos
-automáticos é a necessidade do usuário ter um certo
-conhecimento sobre o método por trás da visualização. Por
-exemplo, no caso da ferramenta iPCA, o usuário pode ver
-pouca utilidade na visualização da janela B apresentada na
-Figura~\ref{fig:ipca} se não souber o que significa um
-componente principal. Para pesquisadores da área pode ser
-até pressuposto que o usuário tenha este tipo de
-conhecimento, no entanto, se o objetivo for criar uma
-ferramenta para o público em geral, então tal suposição pode
-restringir o seu uso.
+Um problema das ferramentas que criam visualizações de
+métodos automáticos é a necessidade do usuário ter um certo
+conhecimento sobre o método por trás da visualização. Para
+pesquisadores da área pode ser até pressuposto que o usuário
+tenha este tipo de conhecimento, no entanto, se o objetivo
+for criar uma ferramenta para o público em geral, então tal
+suposição pode restringir o seu uso.
 
 \subsection{Construção Interativa de Atributos}\label{sec:tr}
 
@@ -340,33 +333,34 @@ base na manipulação sobre amostras dos itens. Os autores
 fazem uso de mapeamento de elementos no plano para permitir
 interações intuitivas sobre os dados. 
 
-Na ferramenta de \citeauthor{Gladys2013}, inicialmente o
+Na ferramenta de \citet{Gladys2013}, inicialmente o
 usuário manipula uma amostra dos dados buscando  agrupar
-elementos que considera similares.  Em seguida, as
+elementos que considera similares. Em seguida, as
 manipulações realizadas sobre a amostra são refletidas para
 o conjunto de dados original, fazendo com que este reflita a
 opinião do usuário em relação ao critério de similaridade
 entre os elementos. Este processo pode ser repetido até que
-se atinja o resultado esperado. Observa-se que para este
-exemplo a transformação do espaço foi bem sucedida, pois
-foram reveladas estruturas que até então não eram
+se atinja o resultado esperado. O método obtém sucesso
+quando são reveladas estruturas que até então não eram
 identificáveis.
 
 Por se tratar de uma abordagem pioneira, essa ferramenta
 possui diversas limitações. Por exemplo, a forma como a
 amostragem é realizada não garante de que elementos de cada
 estrutura presente nos dados são escolhidos.
-Consequentemente, exige-se mais iterações do usuário 
-para que seu conhecimento seja agregado aos dados. Portanto,
-existem inúmeras possibilidades de trabalhos futuros para
-pesquisas em construção interativa de atributos.
+Consequentemente, exige-se mais iterações do usuário para
+que seu conhecimento seja agregado aos dados.  Acredita-se
+que a pesquisa em construção interativa de atributos
+apresenta um grande potencial e devido à sua recente
+introdução, apresenta também inúmeras possibilidades de
+trabalhos futuros. 
 
 \subsection{Considerações Finais}
 
 Nesta seção foram apresentados ferramentas que viabilizam a
 modificação interativa de conjuntos de dados de modo a
-torná-los mais representativos para a compreensão do
-fenômeno em estudo.  Nas discussões foram levantadas uma
+torná-los mais representativos para a execução de tarefas
+subjacentes. Nas discussões foram levantadas uma
 série de limitações dos trabalhos do atual estado da arte.
 Tal levantamento foi levado em consideração para a escrita
 da proposta deste projeto de trabalho de mestrado, a qual é

@@ -13,7 +13,7 @@ detecções de fraude, análise de mercado, etc.
 
 % Dados multidimensionais 
 As investigações sobre os dados são precedidas pelas etapas
-de coleta e armazenamento dos dados, as quais podem ser
+de coleta e armazenamento, as quais podem ser
 realizadas por sensores, sistemas de monitoramento,
 simulações computacionais ou aplicações diversas que
 utilizam banco de dados. Nessas etapas, busca-se registrar o
@@ -24,7 +24,7 @@ ar, etc. As observações poderiam ser realizadas em
 diferentes posições geográficas, onde para cada posição
 teria-se uma coleção de variáveis. Comumente, denomina-se
 cada uma dessas coleções como uma instância de dados.
-Assim, sabendo que cada variável observada também pode ser
+Como cada variável observada também pode ser
 chamada de dimensão, quando diversas instâncias de dados são
 coletadas obtém-se um conjunto de dados multidimensional. 
 
@@ -33,23 +33,23 @@ Explorar conjuntos de dados multidimensionais envolve uma
 série de desafios. Um deles é a dificuldade em se
 identificar quais dos dados coletados são realmente
 relevantes para as análises. Isso faz com que, muitas vezes,
-se utilize todas as variáveis observadas nas investigações,
+se utilize nas investigações todas as variáveis observadas,
 sejam elas relevantes ou não. Nessas condições, eleva-se a
 complexidade das análises e também o custo computacional dos
 métodos que são aplicados sobre os dados~\cite{Beyer1999}.
-Um outro problema é a falta de garantias de que os fatores
-fundamentais para a compreensão do problema tenham sido
-coletados. A maioria das aplicações está sujeita a essa
-situação, pois os sistemas de coleta de dados são
-suscetíveis a falhas e não reconhecem facilmente fatores
-subjetivos. 
+Um outro desafio da exploração é a falta de
+garantias de que os fatores fundamentais para a compreensão
+do problema tenham sido coletados. A maioria das aplicações
+está sujeita a essa situação, pois os sistemas de coleta de
+dados são suscetíveis a falhas e não reconhecem facilmente
+fatores subjetivos. 
 
 % Solução para o problema: transformar os dados Primeira
 Um modo de contornar esses problemas é transformar os dados
 para torná-los mais representativos para a execução das
-tarefas seguintes. A transformação mais comumente aplicada
+tarefas subjacentes. A transformação mais comumente aplicada
 sobre os dados é a redução de dimensionalidade. Esta tem
-como objetivo encontrar o menor espaço dimensional que é
+por objetivo encontrar o menor espaço dimensional que é
 capaz de descrever os dados mantendo informações que são
 relevantes segundo algum critério. O processo de redução
 pode ser realizado tanto pela eliminação de dimensões
@@ -64,7 +64,7 @@ de redução apresentam uma natureza dita ``caixa-preta'',
 pois o usuário inspeciona apenas os dados de entrada e
 saída, desconhecendo o processamento realizado internamente.
 Esta natureza torna esses métodos pouco compreensivos e,
-além disso, proíbe que o usuário contribua com a sua
+além disso, não possibilita que o usuário contribua com a sua
 experiência na área. Buscando tratar essa limitação novos
 métodos têm sido propostos. Eles permitem que o usuário
 guie o processo de redução por meio da interação com
@@ -76,7 +76,7 @@ interação do usuário têm sido aplicadas não somente em
 tarefas de redução de dimensionalidade, mas em diversas
 áreas de exploração de dados. Elas ganharam grande
 popularidade nos últimos anos~\cite{State2012} e propiciaram
-a firmação da área de visualização de
+a consolidação da área de visualização de
 informação~\cite{Keim2002}. Grande parte do sucesso desta
 recente área pode ser atribuído ao uso efetivo da capacidade
 preemptiva da visão humana na exploração dos dados. Foi
@@ -104,25 +104,39 @@ dados mais representativos. Isso ocorre quando fatores
 fundamentais para a compreensão do problema não foram
 capturados na etapa de coleta dos dados. Em situações como
 essa, o problema só poderá ser descrito por completo ao se
-agregar o conhecimento do usuário nos dados. A pesquisa em
-construção interativa de dimensões é muito recente, sendo
-que a principal contribuição data neste mesmo
+agregar o conhecimento do usuário nos dados. 
+
+% Wrapping do estado da arte
+A pesquisa em construção interativa de dimensões é muito
+recente, sendo que a principal contribuição data deste
 ano~\cite{Gladys2013}. Devido à essa imaturidade, as
-técnicas propostas ainda apresentam diversas limitações. 
+técnicas propostas ainda apresentam diversas limitações.
+Apesar das técnicas de redução de dimensionalidade estarem
+sendo discutidas há mais de um século~\cite{Pearson1901} e se
+encontram em um estado avançado de desenvolvimento, elas 
+apresentam a natureza ``caixa-preta'' mencionada
+anteriormente.  Os métodos de redução interativa não são tão
+recentes quanto os métodos de construção de dimensões.
+Porém, apresentam limitações tanto em relação às
+visualizações em que se baseiam quanto aos mecanismos de
+interação propostos.  Muitos desses métodos interativos
+partem de interfaces demasiadamente complexas e não fornecem
+a flexibilidade necessária para que o usuário modifique os
+dados adequadamente.
 
 % Objetivo do trabalho
-Deste modo, este trabalho de mestrado tem como objetivo
-desenvolver uma técnica para transformação de dados
-multidimensionais que atenda às duas situações descritas
-anteriormente. A primeira, em que é necessário reduzir a
-dimensionalidade dos dados para se eliminar variáveis
-irrelevantes ou redundantes. E a segunda, em que novas
-dimensões devem ser construídas com base no conhecimento do
-usuário para representar informações ausentes nos dados. A
-abordagem proposta leva em consideração as limitações dos
-trabalhos do atual estado da arte e se baseia na
-simplicidade das visualizações e dos mecanismos de interação
-para superá-las. 
+Deste modo, este projeto de mestrado tem como objetivo
+desenvolver uma ferramenta visual interativa para a
+transformação de dados multidimensionais que atenda às duas
+situações descritas anteriormente. A primeira, em que é
+necessário reduzir a dimensionalidade dos dados para se
+eliminar variáveis irrelevantes e redundantes. E a segunda,
+em que novas dimensões devem ser construídas com base no
+conhecimento do usuário para representar informações
+ausentes nos dados. A abordagem proposta leva em
+consideração as limitações dos trabalhos do atual estado da
+arte e se baseia na simplicidade das visualizações e na
+integração  dos mecanismos de interação para superá-las. 
 
 % Resultados esperados e forma de avaliação 
 A obtenção de conjuntos de dados representativos, isto é,
@@ -137,6 +151,12 @@ desenvolvida, seguida de uma comparação com técnicas já
 estabelecidas na literatura.
 
 % Organização monografia
-A seguir apresenta-se um levantamento sobre trabalhos
-que também buscam transformar conjuntos de dados para
-torná-los mais representativos para o problema em estudo. 
+O restante deste documento está organizado da seguinte
+maneira. Na Seção~\ref{sec:related}, apresenta-se uma
+discussão sobre trabalhos que também buscam transformar
+conjuntos de dados para torná-los mais representativos. Com
+base em um levantamento dos problemas e limitações desses
+trabalhos desenvolveu-se a proposta desse projeto que é
+apresentada na Seção~\ref{sec:proposal}. Por fim, na
+Seção~\ref{sec:cron} apresenta-se o plano de atividades e o
+cronograma a ser seguido.

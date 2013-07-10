@@ -101,7 +101,9 @@ se explorar individualmente cada dimensão ou avaliar
 par-a-par as relações entre atributos. Com a ocorrência de
 dependências não lineares este problema se torna ainda maior
 e o usuário pode se perder em suas análises e não extrair
-novos conhecimentos dos resultados. 
+novos conhecimentos dos resultados. Na abordagem aqui
+proposta as relações entre os atributos poderão ser
+avaliadas globalmente.
 
 A seguir apresenta-se representações visuais alternativas às
 matrizes de correlação. Essas abordagens fornecem mecanismos
@@ -158,8 +160,11 @@ analisados separadamente~\cite{May2011}. Uma maneira de
 contornar este problema seria apresentar os itens
 simultaneamente com a representação das dimensões, assim o
 usuário poderia detectar grupos não somente nas dimensões
-mais também nos itens. Criar tal representação é o objetivo
-dos trabalhos discutidos a seguir.
+mas também nos itens. Os trabalhos discutidos a seguir
+utilizam tal representação para reduzir a dimensionalidade
+dos conjuntos de dados. Esses trabalhos servem como
+inspiração para a construção das visualizações que
+utilizaremos na proposta.  
 
 \subsubsection{Mapeamento de Elementos no Plano}
 
@@ -179,7 +184,7 @@ no plano o usuário pode compreender como as dimensões se
 relacionam entre si. O usuário é capaz de construir espaços
 dimensionais reduzidos que conservam certas características
 dos dados por meio de seleções manuais sobre os dados ou
-pelo uso de um método automático.  Este método automático
+pelo uso de um método automático. Este método automático
 parte de uma dimensão de referência e de um limiar definido
 pelo usuário e retorna as dimensões mais semelhantes à esta
 referência.
@@ -229,7 +234,8 @@ variações na importância de um atributo em diferentes
 subconjuntos dos dados. Uma das limitações de ambos os
 métodos, VaR e BD, é não permitir que o usuário construa
 novas dimensões com base nas originais ou
-com base no seu conhecimento.
+com base no seu conhecimento. Possibilitar esse tipo de
+interação é um dos objetivos desta proposta.
 
 Uma questão inerente de se mapear elementos de um espaço de
 alta dimensionalidade em um plano, sejam os elementos itens
@@ -312,7 +318,8 @@ conhecimento sobre o método por trás da visualização. Para
 pesquisadores da área pode ser até pressuposto que o usuário
 tenha este tipo de conhecimento, no entanto, se o objetivo
 for criar uma ferramenta para o público em geral, então tal
-suposição pode restringir o seu uso.
+suposição pode restringir o seu uso. Em nossa proposta não
+exigimos conhecimento prévio dos usuários.
 
 \subsection{Construção Interativa de Atributos}\label{sec:tr}
 
@@ -326,7 +333,7 @@ usuário agregue seu conhecimento sobre os dados.
 
 Esse tipo de abordagem ainda não conta com uma literatura
 tão vasta quanto a dos métodos de redução de
-dimensionalidade. Sendo que a principal contribuição é a
+dimensionalidade. Sendo que a contribuição mais relevante é a
 ferramenta proposta por \citet{Gladys2013} que possibilita ao
 usuário modificar os atributos de um conjunto de dados com
 base na manipulação sobre amostras dos itens. Os autores
@@ -344,24 +351,12 @@ se atinja o resultado esperado. O método obtém sucesso
 quando são reveladas estruturas que até então não eram
 identificáveis.
 
-Por se tratar de uma abordagem pioneira, essa ferramenta
-possui diversas limitações. Por exemplo, a forma como a
-amostragem é realizada não garante de que elementos de cada
-estrutura presente nos dados são escolhidos.
-Consequentemente, exige-se mais iterações do usuário para
-que seu conhecimento seja agregado aos dados.  Acredita-se
-que a pesquisa em construção interativa de atributos
-apresenta um grande potencial e devido à sua recente
-introdução, apresenta também inúmeras possibilidades de
-trabalhos futuros. 
+No entanto, essa ferramenta não constrói novas dimensões,
+mas sim modifica as existentes para agregar o conhecimento
+do usuário. Ao se transformar os dados originais o usuário
+pode ter dificuldade em interpretar o resultado obtido,
+semelhantemente ao que acontece com os métodos automáticos.
+Na abordagem aqui proposta pretendemos mapear o conhecimento
+do usuário em novas dimensões e conservar ao máximo as
+dimensões originais.
 
-\subsection{Considerações Finais}
-
-Nesta seção foram apresentados ferramentas que viabilizam a
-modificação interativa de conjuntos de dados de modo a
-torná-los mais representativos para a execução de tarefas
-subjacentes. Nas discussões foram levantadas uma
-série de limitações dos trabalhos do atual estado da arte.
-Tal levantamento foi levado em consideração para a escrita
-da proposta deste projeto de trabalho de mestrado, a qual é
-apresentada na seção a seguir.
